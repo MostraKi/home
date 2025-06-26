@@ -16,11 +16,19 @@
       flex-direction: column;
       min-height: 100vh;
 
-      background-image: url('fundo_mostraki.png');
+      background-image: url('fundo-desktop.png');
       background-repeat: no-repeat;
-      background-position: center center;
+      background-position: center top;
       background-attachment: fixed;
       background-size: cover;
+    }
+
+    @media (max-width: 767px) {
+      body {
+        background-image: url('fundo-mobile.png');
+        background-attachment: scroll;
+        background-position: top center;
+      }
     }
 
     header {
@@ -90,19 +98,16 @@
       display: none;
     }
 
-    /* Exibe apenas o banner desktop em telas grandes */
     @media (min-width: 768px) {
       .banner-desktop {
         display: block;
       }
     }
 
-    /* Exibe apenas o banner mobile em telas pequenas */
     @media (max-width: 767px) {
       .banner-mobile {
         display: block;
       }
-
       .banner-container {
         max-height: 260px;
       }
@@ -225,16 +230,12 @@
   </header>
 
   <div class="banner-container">
-    <!-- Banner para desktop -->
     <video class="banner-desktop" autoplay muted loop playsinline>
       <source src="banner-desktop.webm" type="video/webm">
-      Seu navegador não suporta vídeos.
     </video>
 
-    <!-- Banner para mobile -->
     <video class="banner-mobile" autoplay muted loop playsinline>
       <source src="banner-mobile.webm" type="video/webm">
-      Seu navegador não suporta vídeos.
     </video>
   </div>
 

@@ -83,15 +83,28 @@
       align-items: center;
     }
 
-    .banner-container video {
+    .banner-desktop, .banner-mobile {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: none;
     }
 
-    @media (min-width: 1200px) {
+    /* Exibe apenas o banner desktop em telas grandes */
+    @media (min-width: 768px) {
+      .banner-desktop {
+        display: block;
+      }
+    }
+
+    /* Exibe apenas o banner mobile em telas pequenas */
+    @media (max-width: 767px) {
+      .banner-mobile {
+        display: block;
+      }
+
       .banner-container {
-        max-height: 300px;
+        max-height: 260px;
       }
     }
 
@@ -212,9 +225,16 @@
   </header>
 
   <div class="banner-container">
-    <video autoplay muted loop playsinline>
-      <source src="banner-mostraki.webm" type="video/webm">
-      Seu navegador não suporta vídeos em .webm.
+    <!-- Banner para desktop -->
+    <video class="banner-desktop" autoplay muted loop playsinline>
+      <source src="banner-desktop.webm" type="video/webm">
+      Seu navegador não suporta vídeos.
+    </video>
+
+    <!-- Banner para mobile -->
+    <video class="banner-mobile" autoplay muted loop playsinline>
+      <source src="banner-mobile.webm" type="video/webm">
+      Seu navegador não suporta vídeos.
     </video>
   </div>
 

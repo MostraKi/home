@@ -4,15 +4,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MostraKi</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url('fundo_mostraki.png') no-repeat center center fixed;
-      background-size: cover;
       color: #333;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+
+      background-image: url('fundo_mostraki.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-size: cover;
     }
 
     header {
@@ -157,14 +165,23 @@
       .menu-toggle {
         display: none;
       }
+
       nav {
         display: flex !important;
         flex-direction: row;
         width: auto;
       }
+
       nav a {
         border-top: none;
         padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .card {
+        padding: 1.5rem;
+        margin-top: 1rem;
       }
     }
   </style>
@@ -187,7 +204,6 @@
     </nav>
   </header>
 
-  <!-- Banner reintegrado -->
   <div class="banner-container">
     <video autoplay muted loop playsinline>
       <source src="banner-mostraki.webm" type="video/webm">
@@ -195,7 +211,6 @@
     </video>
   </div>
 
-  <!-- Corpo com fundo e card branco -->
   <div class="main-container">
     <div class="card">
       <h1>Nova Matéria em Destaque</h1>

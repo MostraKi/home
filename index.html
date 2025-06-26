@@ -7,41 +7,52 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #fff;
+      background: url('fundo_mostraki.png') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.6rem; /* Reduzido em 40% */
-      background-color: #eed2ff; /* Cor alterada conforme pedido */
+      padding: 0.6rem;
+      background-color: #eed2ff;
       border-bottom: 1px solid #ddd;
       flex-wrap: wrap;
     }
+
     .logo {
       display: flex;
       align-items: center;
     }
+
     .logo img {
       height: 60px;
     }
+
     .menu-toggle {
       display: block;
       cursor: pointer;
     }
+
     .menu-toggle div {
       width: 25px;
       height: 3px;
       background-color: #333;
       margin: 5px 0;
     }
+
     nav {
       display: none;
       flex-direction: column;
       width: 100%;
       text-align: center;
     }
+
     nav a {
       padding: 1rem;
       text-decoration: none;
@@ -49,9 +60,11 @@
       font-weight: bold;
       border-top: 1px solid #eee;
     }
+
     nav.active {
       display: flex;
     }
+
     .banner-container {
       width: 100%;
       max-height: 480px;
@@ -61,52 +74,77 @@
       justify-content: center;
       align-items: center;
     }
+
     .banner-container video {
       width: 100%;
       height: auto;
     }
-    .hero {
+
+    .main-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       padding: 2rem 1rem;
-      text-align: center;
     }
-    .hero h1 {
-      font-size: 2rem;
+
+    .card {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem;
+    }
+
+    .card h1 {
+      font-size: 1.8rem;
+      color: #8e24aa;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #444;
       margin-bottom: 2rem;
     }
+
     .buttons {
       display: flex;
-      flex-direction: column;
       gap: 1rem;
-      align-items: center;
-      margin-bottom: 3rem;
+      flex-wrap: wrap;
     }
+
     .buttons a {
-      padding: 1rem 2rem;
-      font-weight: bold;
-      border-radius: 6px;
       text-decoration: none;
-      font-size: 1rem;
-      width: 80%;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
       text-align: center;
+      font-size: 1rem;
+      transition: background-color 0.3s;
     }
+
     .btn-vermelho {
       background-color: #e63946;
       color: white;
     }
+
+    .btn-vermelho:hover {
+      background-color: #d62839;
+    }
+
     .btn-verde {
+      background-color: transparent;
       border: 2px solid #2a9d8f;
       color: #2a9d8f;
-      background-color: transparent;
     }
-    .sobre {
-      padding: 2rem 1rem;
-      background-color: #f9f9f9;
-      text-align: center;
+
+    .btn-verde:hover {
+      background-color: #2a9d8f;
+      color: white;
     }
-    .sobre h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
+
     footer {
       text-align: center;
       font-size: 0.875rem;
@@ -114,6 +152,7 @@
       background-color: #f1f1f1;
       color: #555;
     }
+
     @media(min-width: 768px) {
       .menu-toggle {
         display: none;
@@ -147,26 +186,31 @@
       <a href="#inscrever">Inscreva-se</a>
     </nav>
   </header>
+
+  <!-- Banner reintegrado -->
   <div class="banner-container">
     <video autoplay muted loop playsinline>
       <source src="banner-mostraki.webm" type="video/webm">
       Seu navegador não suporta vídeos em .webm.
     </video>
   </div>
-  <section class="hero">
-    <h1>Seu trabalho com mais força e clareza. Faça parte do MostraKi.</h1>
-    <div class="buttons">
-      <a href="#inscrever" class="btn-vermelho">Quero Participar</a>
-      <a href="#planos" class="btn-verde">Ver Planos</a>
+
+  <!-- Corpo com fundo e card branco -->
+  <div class="main-container">
+    <div class="card">
+      <h1>Nova Matéria em Destaque</h1>
+      <p>Este é um exemplo de como apresentar conteúdos, atualizações ou chamadas no corpo do site MostraKi com clareza, foco e estética visual limpa.</p>
+      <div class="buttons">
+        <a href="#" class="btn-vermelho">Ler Completo</a>
+        <a href="#" class="btn-verde">Voltar</a>
+      </div>
     </div>
-  </section>
-  <section class="sobre" id="sobre">
-    <h2>Sobre o MostraKi</h2>
-    <p>MostraKi é um espaço de apoio para quem cria seus próprios produtos. Aqui, você encontra estrutura, linguagem e apresentação para mostrar seu trabalho com dignidade e eficiência.</p>
-  </section>
+  </div>
+
   <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
   </footer>
+
   <script>
     function toggleMenu() {
       const nav = document.getElementById('main-nav');

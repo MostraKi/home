@@ -1,12 +1,7 @@
-<!DOCTYPE html><html lang="pt-BR">
-<head>
+<!DOCTYPE html><html lang="pt-BR"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MostraKi</title>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-  <meta http-equiv="Pragma" content="no-cache"/>
-  <meta http-equiv="Expires" content="0"/>
-  <link rel="manifest" href="manifest.json">
+  <title>MostraKi</title>  <!-- PWA -->  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#eed2ff"/>
   <script>
     if ('serviceWorker' in navigator) {
@@ -16,15 +11,116 @@
           .catch(err => console.log('Erro no Service Worker:', err));
       });
     }
-  </script>
-  <style>
+  </script>  <!-- Estilo -->  <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    /* [o resto do CSS permanece igual ao anterior] */
-  </style>
-</head>
-<body>
-  <!-- [restante do HTML permanece igual] -->
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('fundo-desktop.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-image: url('fundo-mobile.png');
+      }
+    }
+
+    header {
+      background-color: #eed2ff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .banner {
+      width: 100%;
+    }
+
+    @media (min-width: 769px) {
+      .banner {
+        content: url('banner-desktop.webm');
+      }
+    }
+
+    @media (max-width: 768px) {
+      .banner {
+        content: url('banner-mobile.webm');
+      }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .container h2 {
+      color: #008080;
+      margin-bottom: 10px;
+    }
+
+    .botao-veja {
+      background-color: #ed1c40;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #eed2ff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+  </style></head><body>
+  <header>
+    <img src="logo-mostraki.png" alt="Logo MostraKi">
+    <nav>
+      <a href="#">Home</a>
+      <a href="como-funciona.html">Como Funciona</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>  <img class="banner" alt="Banner MostraKi">  <div class="container">
+    <h2>Como funciona?</h2>
+    <p>Entenda como o MostraKi ajuda você a destacar seu catálogo com clareza, foco e identidade visual única.</p>
+    <button class="botao-veja">Veja mais</button>
+  </div>  <div class="container">
+    <h2>Redes Sociais</h2>
+    <p>Estamos presentes no Instagram, WhatsApp e outras redes para divulgar o seu catálogo com maior alcance.</p>
+    <button class="botao-veja">Veja mais</button>
+  </div>  <div class="container">
+    <h2>Serviços Adicionais</h2>
+    <p>Explore recursos extras como banners personalizados, destaques de promoção e links inteligentes.</p>
+    <button class="botao-veja">Veja mais</button>
+  </div>  <footer>
+    &copy; 2024 MostraKi. Todos os direitos reservados.
+  </footer>
 </body>
 </html>

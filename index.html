@@ -31,11 +31,14 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #00bcd4;
 }
 
-.logo span {
-  color: #e91e63;
+.logo .mostra {
+  color: #15b0af;
+}
+
+.logo .ki {
+  color: #d73e45;
 }
 
 .menu-icon {
@@ -47,7 +50,7 @@ header {
   position: absolute;
   top: 60px;
   right: 20px;
-  background-color: white;
+  background-color: #ffe3c6;
   border: 2px solid black;
   border-radius: 6px;
   display: none;
@@ -58,17 +61,17 @@ header {
 
 .menu-list a {
   text-decoration: none;
-  color: black;
+  color: white;
   padding: 10px 15px;
   border-radius: 6px;
   font-weight: bold;
-  background-color: #e91e63;
+  background-color: #d73e45;
   margin-bottom: 8px;
   text-align: center;
 }
 
 .menu-list a:hover {
-  background-color: #d81b60;
+  background-color: #b8313b;
 }
 
 .banner video {
@@ -121,7 +124,7 @@ footer {
 </head>
 <body>
   <header>
-    <div class="logo">Mostra<span>Ki</span></div>
+    <div class="logo"><span class="mostra">Mostra</span><span class="ki">Ki</span></div>
     <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
     <div class="menu-list" id="menu">
       <a href="/">Home</a>

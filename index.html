@@ -1,88 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matéria – MostraKi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MostraKi</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#eed2ff"/>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('Service Worker registrado:', reg.scope))
+          .catch(err => console.log('Erro no Service Worker:', err));
+      });
+    }
+  </script>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+    body {
       font-family: Arial, sans-serif;
-      background: url('fundo_mostraki.png') no-repeat center center fixed;
+      background: url('fundo-desktop.png') no-repeat center center fixed;
       background-size: cover;
+    }
+    @media (max-width: 768px) {
+      body {
+        background: url('fundo-mobile.png') no-repeat center center fixed;
+        background-size: cover;
+      }
+    }
+    header {
+      background-color: #eed2ff;
+      height: 60px;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 2rem 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
-    .card {
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      max-width: 600px;
-      width: 100%;
-      padding: 2rem;
-    }
-
-    .card h1 {
-      font-size: 1.8rem;
-      color: #8e24aa; /* Roxo vivo estilo PokéDaimon */
-      margin-bottom: 1rem;
-    }
-
-    .card p {
-      font-size: 1rem;
-      color: #444;
-      margin-bottom: 2rem;
-    }
-
-    .buttons {
+    .logo {
       display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+      align-items: center;
     }
-
-    .buttons a {
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .menu a {
+      margin-left: 20px;
       text-decoration: none;
-      padding: 0.75rem 1.5rem;
+      color: #333;
+      font-weight: bold;
+    }
+    .banner {
+      width: 100%;
+      max-height: 300px;
+      overflow: hidden;
+    }
+    .banner video {
+      width: 100%;
+      height: auto;
+    }
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .section h2 {
+      color: #008b8b;
+      margin-bottom: 20px;
+    }
+    .section button {
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
       border-radius: 8px;
       font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #eed2ff;
       text-align: center;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-
-    .btn-vermelho {
-      background-color: #e63946;
-      color: white;
-    }
-
-    .btn-vermelho:hover {
-      background-color: #d62839;
-    }
-
-    .btn-verde {
-      background-color: transparent;
-      border: 2px solid #2a9d8f;
-      color: #2a9d8f;
-    }
-
-    .btn-verde:hover {
-      background-color: #2a9d8f;
-      color: white;
+      padding: 20px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Nome da Matéria em Destaque</h1>
-    <p>Texto principal da matéria aqui. Este espaço é para você descrever em detalhes o assunto, compartilhar informações importantes e manter o visitante interessado.</p>
-    <div class="buttons">
-      <a href="#" class="btn-vermelho">Ler Completo</a>
-      <a href="#" class="btn-verde">Voltar ao Início</a>
+  <header>
+    <div class="logo">
+      <img src="logo-mostraki.png" alt="Logo MostraKi">
     </div>
+    <nav class="menu">
+      <a href="#como-funciona">Como Funciona</a>
+      <a href="#redes-sociais">Redes Sociais</a>
+      <a href="#servicos">Serviços Adicionais</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <video autoplay muted loop>
+      <source src="banner-desktop.webm" type="video/webm" media="(min-width: 769px)">
+      <source src="banner-mobile.webm" type="video/webm" media="(max-width: 768px)">
+      Seu navegador não suporta vídeo.
+    </video>
   </div>
+
+  <div class="section" id="como-funciona">
+    <h2>Como Funciona?</h2>
+    <p>Descubra como montar sua vitrine de forma rápida e eficaz.</p>
+    <button>Veja Mais</button>
+  </div>
+
+  <div class="section" id="redes-sociais">
+    <h2>Redes Sociais</h2>
+    <p>Conecte suas vitrines com seus canais digitais.</p>
+    <button>Veja Mais</button>
+  </div>
+
+  <div class="section" id="servicos">
+    <h2>Serviços Adicionais</h2>
+    <p>Recursos extras para destacar seus produtos.</p>
+    <button>Veja Mais</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 MostraKi - Todos os direitos reservados</p>
+  </footer>
 </body>
 </html>
+
+

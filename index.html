@@ -48,7 +48,7 @@ header {
   top: 60px;
   right: 20px;
   background-color: white;
-  border: 1px solid #ccc;
+  border: 2px solid black;
   border-radius: 6px;
   display: none;
   flex-direction: column;
@@ -58,13 +58,17 @@ header {
 
 .menu-list a {
   text-decoration: none;
-  color: #333;
-  padding: 8px 12px;
-  border-radius: 4px;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  background-color: #e91e63;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .menu-list a:hover {
-  background-color: #f0f0f0;
+  background-color: #d81b60;
 }
 
 .banner video {
@@ -120,7 +124,9 @@ footer {
     <div class="logo">Mostra<span>Ki</span></div>
     <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
     <div class="menu-list" id="menu">
+      <a href="/">Home</a>
       <a href="/planos">Planos</a>
+      <a href="/sobre">Sobre</a>
       <a href="/servicos">Serviços</a>
       <a href="/contato">Contato</a>
     </div>

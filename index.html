@@ -1,149 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MostraKi</title>
-  <meta name="theme-color" content="#eed2ff" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(reg => console.log('Service Worker registrado:', reg.scope))
-          .catch(err => console.error('Erro no Service Worker:', err));
-      });
-    }
-  </script>
+  <title>Matéria – MostraKi</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background-image: url('fundo-desktop.png');
+      background: url('fundo_mostraki.png') no-repeat center center fixed;
       background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      color: #333;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        background-image: url('fundo-mobile.png');
-      }
-    }
-
-    header {
-      background-color: #eed2ff;
-      height: 60px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 2rem 1rem;
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #00bcd4;
+    .card {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem;
     }
 
-    .logo span {
-      color: #e91e63;
+    .card h1 {
+      font-size: 1.8rem;
+      color: #8e24aa; /* Roxo vivo estilo PokéDaimon */
+      margin-bottom: 1rem;
     }
 
-    main {
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    .cta-button {
-      background-color: #00bcd4;
-      color: #fff;
-      padding: 12px 24px;
+    .card p {
       font-size: 1rem;
-      border: none;
+      color: #444;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
       border-radius: 8px;
       font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    .cta-button:hover {
-      background-color: #00acc1;
-    }
-
-    .section {
-      margin: 40px 0;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-    }
-
-    .section h2 {
-      color: #0097a7; /* Turquesa escuro */
-      margin-bottom: 10px;
-    }
-
-    .section button {
-      background-color: #00bcd4;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    footer {
-      background-color: #eed2ff;
-      padding: 20px;
       text-align: center;
-      font-size: 0.9rem;
-      margin-top: 40px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn-vermelho {
+      background-color: #e63946;
+      color: white;
+    }
+
+    .btn-vermelho:hover {
+      background-color: #d62839;
+    }
+
+    .btn-verde {
+      background-color: transparent;
+      border: 2px solid #2a9d8f;
+      color: #2a9d8f;
+    }
+
+    .btn-verde:hover {
+      background-color: #2a9d8f;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Mostra<span>Ki</span></div>
-  </header>
-
-  <main>
-    <h1>Bem-vindo ao MostraKi</h1>
-    <p>Organize seus produtos. Mostre com clareza. Construa com autonomia.</p>
-    <button class="cta-button">Assine Já</button>
-
-    <div class="section">
-      <h2>Como Funciona?</h2>
-      <p>Veja como é fácil mostrar seus produtos e conteúdos.</p>
-      <button>Veja Mais</button>
+  <div class="card">
+    <h1>Nome da Matéria em Destaque</h1>
+    <p>Texto principal da matéria aqui. Este espaço é para você descrever em detalhes o assunto, compartilhar informações importantes e manter o visitante interessado.</p>
+    <div class="buttons">
+      <a href="#" class="btn-vermelho">Ler Completo</a>
+      <a href="#" class="btn-verde">Voltar ao Início</a>
     </div>
-
-    <div class="section">
-      <h2>Redes Sociais</h2>
-      <p>Conecte e compartilhe com seu público.</p>
-      <button>Veja Mais</button>
-    </div>
-
-    <div class="section">
-      <h2>Serviços Adicionais</h2>
-      <p>Descubra as vantagens que vão além do essencial.</p>
-      <button>Veja Mais</button>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>
+  </div>
 </body>
 </html>

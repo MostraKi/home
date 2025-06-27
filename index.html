@@ -28,6 +28,16 @@ header {
   position: relative;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 40px;
+  margin-right: 10px;
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -124,7 +134,10 @@ footer {
 </head>
 <body>
   <header>
-    <div class="logo"><span class="mostra">Mostra</span><span class="ki">Ki</span></div>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo" />
+      <div class="logo"><span class="mostra">Mostra</span><span class="ki">Ki</span></div>
+    </div>
     <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
     <div class="menu-list" id="menu">
       <a href="/">Home</a>

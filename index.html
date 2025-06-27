@@ -88,13 +88,11 @@ footer {
     <div class="logo">Mostra<span>Ki</span></div>
     <div class="menu-icon">&#9776;</div>
   </header>  <div class="banner">
-    <picture>
-      <source media="(max-width: 768px)" srcset="banner-mobile.webm" type="video/webm">
-      <source media="(min-width: 769px)" srcset="banner-desktop.webm" type="video/webm">
-      <video autoplay muted loop playsinline>
-        <source src="banner-desktop.webm" type="video/webm">
-      </video>
-    </picture>
+    <video autoplay muted loop playsinline>
+      <source src="banner-mobile.webm" type="video/webm" media="(max-width: 768px)">
+      <source src="banner-desktop.webm" type="video/webm" media="(min-width: 769px)">
+      Seu navegador não suporta vídeo HTML5.
+    </video>
   </div>  <div class="section">
     <h2>Como Funciona?</h2>
     <p>Explicamos de forma clara como usar o MostraKi para divulgar seus produtos e ideias.</p>

@@ -1,14 +1,14 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MostraKi</title>
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#eed2ff"/>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <meta http-equiv="Pragma" content="no-cache"/>
   <meta http-equiv="Expires" content="0"/>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#eed2ff"/>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -19,13 +19,80 @@
     }
   </script>
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: url('fundo-desktop.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
     }
-    /* [o resto do CSS permanece igual ao anterior] */
+    header {
+      background-color: #eed2ff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      color: #000;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .section h2 {
+      color: #008080; /* Turquesa escuro */
+      margin-bottom: 10px;
+    }
+    .section button {
+      background-color: #008080;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #eed2ff;
+      padding: 20px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      body {
+        background: url('fundo-mobile.png') no-repeat center center fixed;
+        background-size: cover;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- [restante do HTML permanece igual] -->
+  <header>
+    <img src="logo-mostraki.png" alt="Logo MostraKi">
+    <nav>
+      <a href="#como-funciona">Como Funciona?</a>
+      <a href="#redes-sociais">Redes Sociais</a>
+      <a href="#servicos">Serviços Adicionais</a>
+    </nav>
+  </header>  <section class="section" id="como-funciona">
+    <h2>Como Funciona?</h2>
+    <p>Entenda a proposta e o funcionamento do MostraKi.</p>
+    <button>Veja Mais</button>
+  </section>  <section class="section" id="redes-sociais">
+    <h2>Redes Sociais</h2>
+    <p>Conecte-se com nossas redes sociais e fique por dentro.</p>
+    <button>Veja Mais</button>
+  </section>  <section class="section" id="servicos">
+    <h2>Serviços Adicionais</h2>
+    <p>Descubra os recursos extras oferecidos pela nossa plataforma.</p>
+    <button>Veja Mais</button>
+  </section>  <footer>
+    <p>&copy; 2025 MostraKi - Todos os direitos reservados.</p>
+  </footer>
 </body>
 </html>

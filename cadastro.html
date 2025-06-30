@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,126 +18,126 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-    }@media (max-width: 768px) {
-  body {
-    background-image: url('fundo-mobile.png');
-  }
-}
-
-header {
-  background-color: #ffe3c6;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-}
-
-.logo-container img {
-  height: 40px;
-  margin-right: 10px;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #15b0af;
-}
-
-.logo span {
-  color: #d73e45;
-}
-
-.menu-toggle {
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  display: none;
-  flex-direction: column;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.menu a {
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #d73e45;
-  border-bottom: 1px solid #eee;
-}
-
-.menu a:last-child {
-  border-bottom: none;
-}
-
-.menu.show {
-  display: flex;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.form-container {
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 400px;
-}
-
-.form-container h2 {
-  margin-bottom: 20px;
-  color: #15b0af;
-}
-
-.form-container input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.form-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #d73e45;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-footer {
-  background-color: #ffe3c6;
-  text-align: center;
-  padding: 15px 0;
-  font-size: 0.9rem;
-  color: #444;
-}
-
+    }
+    @media (max-width: 768px) {
+      body {
+        background-image: url('fundo-mobile.png');
+      }
+    }
+    header {
+      background-color: #ffe3c6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-container img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #15b0af;
+    }
+    .logo span {
+      color: #d73e45;
+    }
+    .menu-toggle {
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .menu a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #d73e45;
+      border-bottom: 1px solid #eee;
+    }
+    .menu a:last-child {
+      border-bottom: none;
+    }
+    .menu.show {
+      display: flex;
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #15b0af;
+    }
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .password-wrapper {
+      position: relative;
+    }
+    .password-wrapper input {
+      padding-right: 40px;
+    }
+    .password-wrapper .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #d73e45;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #ffe3c6;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      color: #444;
+    }
   </style>
 </head>
 <body>
@@ -153,17 +154,26 @@ footer {
       <a href="#servicos">Serviços</a>
       <a href="#contato">Contato</a>
     </div>
-  </header>  <main>
+  </header>
+
+  <main>
     <div class="form-container">
       <h2>Crie sua conta</h2>
       <input type="text" id="nome" placeholder="Nome" />
       <input type="email" id="email" placeholder="Email" />
-      <input type="password" id="senha" placeholder="Senha" />
+      <div class="password-wrapper">
+        <input type="password" id="senha" placeholder="Senha" />
+        <button type="button" class="toggle-password" onclick="toggleSenha()">👁️</button>
+      </div>
       <button onclick="registrar()">Cadastrar</button>
     </div>
-  </main>  <footer>
+  </main>
+
+  <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>  <script>
+  </footer>
+
+  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyCE2Q4UXC9rzWjtmWIy3aa6e56sWk80TqY",
       authDomain: "mostraki-8dc92.firebaseapp.com",
@@ -179,17 +189,23 @@ footer {
       document.getElementById('menu').classList.toggle('show');
     }
 
+    function toggleSenha() {
+      const senhaInput = document.getElementById("senha");
+      senhaInput.type = senhaInput.type === "password" ? "text" : "password";
+    }
+
     function registrar() {
       const email = document.getElementById("email").value;
       const senha = document.getElementById("senha").value;
 
       firebase.auth().createUserWithEmailAndPassword(email, senha)
-        .then((userCredential) => {
-          alert("Cadastro realizado com sucesso!");
+        .then(() => {
+          window.location.href = "cadastro-sucesso.html";
         })
         .catch((error) => {
           alert(error.message);
         });
     }
-  </script></body>
+  </script>
+</body>
 </html>

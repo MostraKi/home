@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="pt-BR"><head>  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html><html lang="pt-BR"><head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>MostraKi</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -16,120 +15,37 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
+}@media (min-width: 768px) { body { background-image: url("fundo-desktop.png"); } }
 
-@media (min-width: 768px) {
-  body {
-    background-image: url("fundo-desktop.png");
-  }
-}
+header { background-color: ##ffffff; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative; }
 
-header {
-  background-color: ##ffffff;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
+.logo-container { display: flex; align-items: center; }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-}
+.logo-container img { height: 40px; margin-right: 10px; }
 
-.logo-container img {
-  height: 40px;
-  margin-right: 10px;
-}
+.logo { font-size: 1.5rem; font-weight: bold; }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
+.logo .mostra { color: #008182; }
 
-.logo .mostra {
-  color: #008182;
-}
+.logo .ki { color: #ec2c4a; }
 
-.logo .ki {
-  color: #ec2c4a;
-}
+.menu-icon { font-size: 1.5rem; cursor: pointer; }
 
-.menu-icon {
-  font-size: 1.5rem;
-  cursor: pointer;
-}
+.menu-list { position: absolute; top: 60px; right: 20px; background-color: #ffe3c6; border: 2px solid black; border-radius: 6px; display: none; flex-direction: column; padding: 10px; z-index: 1000; }
 
-.menu-list {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background-color: #ffe3c6;
-  border: 2px solid black;
-  border-radius: 6px;
-  display: none;
-  flex-direction: column;
-  padding: 10px;
-  z-index: 1000;
-}
+.menu-list a { text-decoration: none; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; background-color: #d73e45; margin-bottom: 8px; text-align: center; }
 
-.menu-list a {
-  text-decoration: none;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 6px;
-  font-weight: bold;
-  background-color: #d73e45;
-  margin-bottom: 8px;
-  text-align: center;
-}
+.menu-list a:hover { background-color: #b8313b; }
 
-.menu-list a:hover {
-  background-color: #b8313b;
-}
+.banner video { width: 100%; height: auto; }
 
-.banner video {
-  width: 100%;
-  height: auto;
-}
+.section { background-color: #ffe3c6; margin: 40px auto; padding: 20px; width: 80%; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); text-align: center; }
 
-.section {
-  background-color: #ffe3c6;
-  margin: 40px auto;
-  padding: 20px;
-  width: 80%;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
+.section h2 { color: #008b8b; margin-bottom: 10px; }
 
-.section h2 {
-  color: #008b8b;
-  margin-bottom: 10px;
-}
+.btn { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #d73e45; color: white; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; }
 
-.btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #d73e45;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-footer {
-  background-color: ##ffe3c6;
-  padding: 20px;
-  text-align: center;
-  color: #555;
-  font-size: 0.9rem;
-}
+footer { background-color: ##ffe3c6; padding: 20px; text-align: center; color: #555; font-size: 0.9rem; }
 
   </style>
   <script>
@@ -181,5 +97,14 @@ footer {
   <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
   </footer>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Service Worker registrado ✅', reg.scope))
+          .catch(err => console.error('Erro ao registrar o Service Worker:', err));
+      });
+    }
+  </script>
 </body>
 </html>

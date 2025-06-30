@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="pt-BR"><head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>MostraKi</title>
+<!DOCTYPE html><html lang="pt-BR"><head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <meta name="apple-mobile-web-app-capable" content="yes" />  <title>MostraKi</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffffff" />
@@ -14,9 +13,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}@media (min-width: 768px) { body { background-image: url("fundo-desktop.png"); } }header { background-color: ##ffffff; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative; }
-
-.logo-container { display: flex; align-items: center; }
+}@media (min-width: 768px) { body { background-image: url("fundo-desktop.png"); } }header { background-color: ##ffffff; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative; }.logo-container { display: flex; align-items: center; }
 
 .logo-container img { height: 40px; margin-right: 10px; }
 
@@ -108,7 +105,7 @@ footer { background-color: ##ffe3c6; padding: 20px; text-align: center; color: #
     <input type="email" id="email" placeholder="Email" style="width:100%; padding:10px; margin:10px 0;">
     <input type="password" id="password" placeholder="Senha" style="width:100%; padding:10px; margin:10px 0;">
     <button onclick="login()" style="width:100%; padding:10px; background:#15b0af; color:white; border:none;">Entrar</button>
-    <button onclick="register()" style="width:100%; padding:10px; background:#d73e45; color:white; border:none; margin-top:10px;">Registrar</button>
+    <button onclick="window.location.href='cadastro.html'" style="width:100%; padding:10px; background:#d73e45; color:white; border:none; margin-top:10px;">Cadastrar</button>
     <p style="margin-top:10px; text-align:right;"><a href="#" onclick="closeModal()">Fechar</a></p>
   </div>
 </div>
@@ -126,11 +123,7 @@ footer { background-color: ##ffe3c6; padding: 20px; text-align: center; color: #
   function openModal() { document.getElementById('loginModal').style.display = 'flex'; }
   function closeModal() { document.getElementById('loginModal').style.display = 'none'; }
   function register() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(() => { alert("Registrado com sucesso!"); closeModal(); })
-      .catch(error => { alert(error.message); });
+    window.location.href = "cadastro.html";
   }
   function login() {
     const email = document.getElementById("email").value;

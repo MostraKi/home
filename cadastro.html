@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,152 +18,169 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-    }@media (max-width: 768px) {
-  body {
-    background-image: url('fundo-mobile.png');
-  }
-}
+    }
 
-header {
-  background-color: #ffe3c6;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
+    @media (max-width: 768px) {
+      body {
+        background-image: url('fundo-mobile.png');
+      }
+    }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-}
+    header {
+      background-color: #ffe3c6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
 
-.logo-container img {
-  height: 40px;
-  margin-right: 10px;
-}
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #15b0af;
-}
+    .logo-container img {
+      height: 40px;
+      margin-right: 10px;
+    }
 
-.logo span {
-  color: #d73e45;
-}
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #15b0af;
+    }
 
-.menu-toggle {
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+    .logo span {
+      color: #d73e45;
+    }
 
-.menu {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  display: none;
-  flex-direction: column;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    .menu-toggle {
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
 
-.menu a {
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #d73e45;
-  border-bottom: 1px solid #eee;
-}
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-.menu a:last-child {
-  border-bottom: none;
-}
+    .menu a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #d73e45;
+      border-bottom: 1px solid #eee;
+    }
 
-.menu.show {
-  display: flex;
-}
+    .menu a:last-child {
+      border-bottom: none;
+    }
 
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
+    .menu.show {
+      display: flex;
+    }
 
-.form-container {
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 400px;
-}
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
 
-.form-container h2 {
-  margin-bottom: 20px;
-  color: #15b0af;
-}
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
 
-.form-container label {
-  font-weight: bold;
-  display: block;
-  margin-top: 10px;
-}
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #15b0af;
+    }
 
-.form-container input {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
+    .form-container label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
 
-.form-container .password-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
 
-.form-container .password-container input {
-  flex: 1;
-}
+    .form-container .password-container {
+      position: relative;
+    }
 
-.form-container .password-container button {
-  position: absolute;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
+    .form-container .password-container button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-.form-container button.submit-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #d73e45;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-}
+    .form-container button.submit-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #d73e45;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
 
-footer {
-  background-color: #ffe3c6;
-  text-align: center;
-  padding: 15px 0;
-  font-size: 0.9rem;
-  color: #444;
-}
+    .google-login {
+      width: 100%;
+      padding: 10px;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
 
+    .google-login img {
+      height: 20px;
+    }
+
+    footer {
+      background-color: #ffe3c6;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      color: #444;
+      margin-top: auto;
+    }
   </style>
 </head>
 <body>
@@ -179,7 +197,9 @@ footer {
       <a href="#servicos">Serviços</a>
       <a href="#contato">Contato</a>
     </div>
-  </header>  <main>
+  </header>
+
+  <main>
     <div class="form-container">
       <h2>Crie sua conta</h2>
       <label for="nome">Nome completo</label>
@@ -192,14 +212,18 @@ footer {
         <button type="button" onclick="toggleSenha()">👁️</button>
       </div>
       <button class="submit-btn" onclick="registrar()">Cadastrar</button>
-      <button onclick="loginComGoogle()" style="width:100%; padding:10px; background:white; color:black; border:1px solid #ccc; border-radius:6px; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:10px; margin-top: 10px;">
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo" style="height:20px;">
+      <button class="google-login" onclick="loginComGoogle()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
         Entrar com Google
       </button>
     </div>
-  </main>  <footer>
+  </main>
+
+  <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>  <script>
+  </footer>
+
+  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyCE2Q4UXC9rzWjtmWIy3aa6e56sWk80TqY",
       authDomain: "mostraki-8dc92.firebaseapp.com",
@@ -243,5 +267,6 @@ footer {
           alert(error.message);
         });
     }
-  </script></body>
+  </script>
+</body>
 </html>

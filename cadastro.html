@@ -4,18 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro - MostraKi</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js"></script>
   <style>
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
       background-image: url('fundo-desktop.png');
       background-size: cover;
-      background-repeat: no-repeat;
       background-position: center;
+      background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -29,16 +28,19 @@
 
     header {
       background-color: #ffe3c6;
-      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
       text-decoration: none;
+      color: inherit;
     }
 
     .logo-container img {
@@ -73,11 +75,6 @@
       display: none;
       flex-direction: column;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    .menu.show {
-      display: flex;
     }
 
     .menu a {
@@ -87,60 +84,66 @@
       border-bottom: 1px solid #eee;
     }
 
+    .menu a:last-child {
+      border-bottom: none;
+    }
+
+    .menu.show {
+      display: flex;
+    }
+
     main {
-      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
+      flex: 1;
     }
 
     .form-container {
-      background: white;
+      background-color: white;
       padding: 30px;
       border-radius: 12px;
-      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 90%;
       max-width: 400px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .form-container h2 {
-      text-align: center;
-      color: #15b0af;
       margin-bottom: 20px;
+      color: #15b0af;
     }
 
     .form-container label {
-      display: block;
       font-weight: bold;
-      margin-top: 15px;
+      display: block;
+      margin-top: 10px;
     }
 
     .form-container input {
       width: 100%;
       padding: 10px;
+      margin: 5px 0 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      margin-top: 5px;
+      box-sizing: border-box;
     }
 
-    .senha-container {
-      display: flex;
-      align-items: center;
+    .password-container {
+      position: relative;
     }
 
-    .senha-container input {
-      flex: 1;
-    }
-
-    .senha-container button {
+    .password-container button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
       background: none;
       border: none;
-      margin-left: -30px;
       cursor: pointer;
+      font-size: 16px;
     }
 
-    .form-container button {
+    .submit-btn {
       width: 100%;
       padding: 10px;
       background-color: #d73e45;
@@ -148,22 +151,28 @@
       border: none;
       border-radius: 6px;
       font-weight: bold;
-      margin-top: 20px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
-    .google-btn {
-      background-color: white;
-      color: #000;
+    .google-login {
+      width: 100%;
+      padding: 10px;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #ccc;
+      gap: 10px;
+      margin-top: 10px;
+      cursor: pointer;
     }
 
-    .google-btn img {
-      width: 20px;
-      margin-right: 8px;
+    .google-login img {
+      height: 20px;
     }
 
     footer {
@@ -172,16 +181,17 @@
       padding: 15px 0;
       font-size: 0.9rem;
       color: #444;
+      margin-top: auto;
     }
   </style>
 </head>
 <body>
   <header>
     <a href="index.html" class="logo-container">
-      <img src="logo.png" alt="Logo" />
+      <img src="logo.png" alt="Logo">
       <div class="logo">Mostra<span>Ki</span></div>
     </a>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
     <div class="menu" id="menu">
       <a href="index.html">Home</a>
       <a href="#sobre">Sobre</a>
@@ -195,22 +205,19 @@
     <div class="form-container">
       <h2>Crie sua conta</h2>
       <label for="nome">Nome completo</label>
-      <input type="text" id="nome" placeholder="Digite seu nome" />
-
+      <input type="text" id="nome" placeholder="Digite seu nome completo" />
       <label for="email">Email</label>
       <input type="email" id="email" placeholder="Digite seu email" />
-
       <label for="senha">Senha</label>
-      <div class="senha-container">
+      <div class="password-container">
         <input type="password" id="senha" placeholder="Digite sua senha" />
         <button type="button" onclick="toggleSenha()">👁️</button>
       </div>
-
-      <button onclick="registrar()">Cadastrar</button>
-      <button class="google-btn" onclick="loginComGoogle()">
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo">
+      <button class="submit-btn" onclick="registrar()">Cadastrar</button>
+      <div class="google-login" onclick="loginComGoogle()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
         Entrar com Google
-      </button>
+      </div>
     </div>
   </main>
 
@@ -228,9 +235,7 @@
       appId: "1:932409459380:web:1ec374091f4498d692cde1",
       measurementId: "G-PRPG5CLE5W"
     };
-
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
 
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('show');
@@ -246,22 +251,22 @@
       const senha = document.getElementById("senha").value;
 
       firebase.auth().createUserWithEmailAndPassword(email, senha)
-        .then(() => {
+        .then((userCredential) => {
           window.location.href = "cadastro-sucesso.html";
         })
         .catch((error) => {
-          alert("Erro ao cadastrar: " + error.message);
+          alert(error.message);
         });
     }
 
     function loginComGoogle() {
       const provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider)
-        .then(() => {
+        .then((result) => {
           window.location.href = "cadastro-sucesso.html";
         })
         .catch((error) => {
-          alert("Erro no login com Google: " + error.message);
+          alert(error.message);
         });
     }
   </script>

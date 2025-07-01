@@ -168,6 +168,17 @@ main {
   height: 20px;
 }
 
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #15b0af;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 footer {
   background-color: #ffe3c6;
   text-align: center;
@@ -210,6 +221,9 @@ footer {
         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
         Entrar com Google
       </button>
+      <div class="login-link">
+        <p>Já tem conta? <a href="login.html">Entrar aqui</a></p>
+      </div>
     </div>
   </main>  <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
@@ -248,7 +262,11 @@ footer {
           window.location.href = "cadastro-sucesso.html";
         })
         .catch((error) => {
-          alert(error.message);
+          if (error.code === "auth/email-already-in-use") {
+            alert("Este e-mail já está cadastrado. Tente fazer login ou use outro e-mail.");
+          } else {
+            alert("Erro ao cadastrar: " + error.message);
+          }
         });
     };
 

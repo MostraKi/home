@@ -264,6 +264,8 @@ footer {
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
             alert("Este e-mail já está cadastrado. Tente fazer login ou use outro e-mail.");
+          } else if (error.code === "auth/invalid-email") {
+            alert("O e-mail digitado parece inválido. Verifique o formato e tente novamente.");
           } else {
             alert("Erro ao cadastrar: " + error.message);
           }

@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro - MostraKi</title>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
   <style>
     body {
       margin: 0;
@@ -18,171 +15,168 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-    }
+    }@media (max-width: 768px) {
+  body {
+    background-image: url('fundo-mobile.png');
+  }
+}
 
-    @media (max-width: 768px) {
-      body {
-        background-image: url('fundo-mobile.png');
-      }
-    }
+header {
+  background-color: #ffe3c6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
-    header {
-      background-color: #ffe3c6;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
-    }
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-    }
+.logo-container img {
+  height: 40px;
+  margin-right: 10px;
+}
 
-    .logo-container img {
-      height: 40px;
-      margin-right: 10px;
-    }
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #15b0af;
+}
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #15b0af;
-    }
+.logo span {
+  color: #d73e45;
+}
 
-    .logo span {
-      color: #d73e45;
-    }
+.menu-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-    .menu-toggle {
-      font-size: 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
+.menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .menu {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+.menu a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #d73e45;
+  border-bottom: 1px solid #eee;
+}
 
-    .menu a {
-      padding: 10px 20px;
-      text-decoration: none;
-      color: #d73e45;
-      border-bottom: 1px solid #eee;
-    }
+.menu a:last-child {
+  border-bottom: none;
+}
 
-    .menu a:last-child {
-      border-bottom: none;
-    }
+.menu.show {
+  display: flex;
+}
 
-    .menu.show {
-      display: flex;
-    }
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
 
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-    }
+.form-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
 
-    .form-container {
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 400px;
-    }
+.form-container h2 {
+  margin-bottom: 20px;
+  color: #15b0af;
+}
 
-    .form-container h2 {
-      margin-bottom: 20px;
-      color: #15b0af;
-    }
+.form-container label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
 
-    .form-container label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
-    }
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
 
-    .form-container input {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-    }
+.form-container .password-container {
+  position: relative;
+}
 
-    .password-container {
-      position: relative;
-    }
+.form-container .password-container button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
 
-    .password-container button {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
+.form-container button.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #d73e45;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
-    .submit-btn {
-      width: 100%;
-      padding: 10px;
-      background-color: #d73e45;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+.google-login {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
 
-    .google-login {
-      width: 100%;
-      padding: 10px;
-      background: white;
-      color: black;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
+.google-login img {
+  height: 20px;
+}
 
-    .google-login img {
-      height: 20px;
-    }
+footer {
+  background-color: #ffe3c6;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  color: #444;
+  margin-top: auto;
+}
 
-    footer {
-      background-color: #ffe3c6;
-      text-align: center;
-      padding: 15px 0;
-      font-size: 0.9rem;
-      color: #444;
-      margin-top: auto;
-    }
   </style>
 </head>
 <body>
@@ -199,9 +193,7 @@
       <a href="#servicos">Serviços</a>
       <a href="#contato">Contato</a>
     </div>
-  </header>
-
-  <main>
+  </header>  <main>
     <div class="form-container">
       <h2>Crie sua conta</h2>
       <label for="nome">Nome completo</label>
@@ -214,18 +206,17 @@
         <button type="button" onclick="toggleSenha()">👁️</button>
       </div>
       <button class="submit-btn" onclick="registrar()">Cadastrar</button>
-      <div class="google-login" onclick="loginComGoogle()">
+      <button class="google-login" onclick="loginComGoogle()">
         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
         Entrar com Google
-      </div>
+      </button>
     </div>
-  </main>
-
-  <footer>
+  </main>  <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>
+  </footer>  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
-  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyCE2Q4UXC9rzWjtmWIy3aa6e56sWk80TqY",
       authDomain: "mostraki-8dc92.firebaseapp.com",
@@ -235,40 +226,41 @@
       appId: "1:932409459380:web:1ec374091f4498d692cde1",
       measurementId: "G-PRPG5CLE5W"
     };
-    firebase.initializeApp(firebaseConfig);
 
-    function toggleMenu() {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.toggleMenu = function () {
       document.getElementById('menu').classList.toggle('show');
-    }
+    };
 
-    function toggleSenha() {
+    window.toggleSenha = function () {
       const senhaInput = document.getElementById("senha");
       senhaInput.type = senhaInput.type === "password" ? "text" : "password";
-    }
+    };
 
-    function registrar() {
+    window.registrar = function () {
       const email = document.getElementById("email").value;
       const senha = document.getElementById("senha").value;
 
-      firebase.auth().createUserWithEmailAndPassword(email, senha)
+      createUserWithEmailAndPassword(auth, email, senha)
         .then((userCredential) => {
           window.location.href = "cadastro-sucesso.html";
         })
         .catch((error) => {
           alert(error.message);
         });
-    }
+    };
 
-    function loginComGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider)
+    window.loginComGoogle = function () {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
         .then((result) => {
           window.location.href = "cadastro-sucesso.html";
         })
         .catch((error) => {
           alert(error.message);
         });
-    }
-  </script>
-</body>
+    };
+  </script></body>
 </html>

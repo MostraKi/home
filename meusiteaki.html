@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu SiteAki - MostraKi</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    body {
+      background-image: url("fundo-mobile.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+    }
+    @media (min-width: 768px) {
+      body { background-image: url("fundo-desktop.png"); }
+    }
+    header {
+      background-color: #ffffff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .logo-container { display: flex; align-items: center; }
+    .logo-container img { height: 40px; margin-right: 10px; }
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    .logo .mostra { color: #008182; }
+    .logo .ki { color: #ec2c4a; }
+    .menu-icon { font-size: 1.5rem; cursor: pointer; }
+    .menu-list {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #ffe3c6;
+      border: 2px solid black;
+      border-radius: 6px;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      z-index: 1000;
+    }
+    .menu-list a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      background-color: #d73e45;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .menu-list a:hover { background-color: #b8313b; }
+    .banner img {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+    @media (max-width: 767px) {
+      .banner img.mobile { display: block; }
+    }
+    @media (min-width: 768px) {
+      .banner img.desktop { display: block; }
+    }
+    .section {
+      background-color: #ffe3c6;
+      margin: 40px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .section h2 { color: #008b8b; margin-bottom: 10px; }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #d73e45;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn:hover { background-color: #b8313b; }
+    footer {
+      background-color: #ffe3c6;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo" />
+      <div class="logo"><span class="mostra">Mostra</span><span class="ki">Ki</span></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    <div class="menu-list" id="menu">
+      <a href="/">Home</a>
+      <a href="/sobre">Sobre</a>
+      <a href="/planos">Planos</a>
+      <a href="/servicos">Serviços</a>
+      <a href="/contato">Contato</a>
+    </div>
+  </header>  <div class="banner">
+    <img src="banner-siteaki-mobile.png" alt="Banner SiteAki Mobile" class="mobile">
+    <img src="banner-siteaki-desktop.png" alt="Banner SiteAki Desktop" class="desktop">
+  </div>  <div class="section">
+    <h2>Meu SiteAki</h2>
+    <p>Você precisa ser assinante para personalizar e publicar sua página.</p>
+    <a href="/planos" class="btn">Torne-se Assinante</a>
+  </div>  <footer>
+    &copy; 2025 MostraKi. Todos os direitos reservados.
+  </footer>  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script></body>
+</html>

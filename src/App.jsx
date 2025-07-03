@@ -4,8 +4,18 @@ function App({ children }) { return (
 ); } 
 export default App;
 // components/Header.jsx function Header() { return ( 
-Mostra Ki 
-Início Sobre Contato ); }
+return (
+  <div>
+    <h1>Mostra Ki</h1>
+    <nav>
+      <ul>
+        <li>Inicio</li>
+        <li>Sobre</li>
+        <li>Contato</li>
+      </ul>
+    </nav>
+  </div>
+); }
 export default Header;
 // components/Footer.jsx function Footer() { return ( © 2025 MostraKi. Todos os direitos reservados. ); }
 export default Footer;

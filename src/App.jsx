@@ -1,4 +1,4 @@
-// src/App.jsx
+8// src/App.jsx
 import { useEffect } from 'react';
 
 function App() {
@@ -107,7 +107,7 @@ export default App;
 <footer className="bg-[#ffe3c6] py-6 text-center text-[#555] text-sm">
   &copy; 2025 MostraKi. Todos os direitos reservados.
 </footer>
-""import './App.css';
+import './App.css';
 
 function App() { return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> <header className="text-center py-6"> <h1 className="text-4xl font-extrabold text-orange-600">MostraKi</h1> <p className="text-lg mt-2 text-gray-600">Descubra, compartilhe e explore sua arte</p> </header>
 

@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
-  <meta charset="UTF-8" />
+<!DOCTYPE html><html lang="pt-BR"><head>  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>MostraKi</title>
@@ -26,9 +25,10 @@
       padding: 0 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       position: relative;
+      flex-direction: row-reverse;
     }
     .logo-container { display: flex; align-items: center; }
-    .logo-container img { height: 40px; margin-right: 10px; }
+    .logo-container img { height: 40px; margin-left: 10px; }
     .logo { font-size: 1.5rem; font-weight: bold; }
     .logo .mostra { color: #008182; }
     .logo .ki { color: #ec2c4a; }
@@ -73,31 +73,6 @@
       padding: 10px 20px;
       background-color: #d73e45;
       color: white;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      background-color: #ffe3c6;
-      padding: 20px;
-      text-align: center;
-      color: #555;
-      font-size: 0.9rem;
-    }
-    .google-login {
-      width: 100%;
-      padding: 10px;
-      background: white;
-      color: black;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
     }
     .google-login img { height: 20px; }
     .user-circle {

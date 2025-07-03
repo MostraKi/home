@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pt-BR"><head>  <meta charset="UTF-8" />
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>MostraKi</title>
@@ -6,7 +8,12 @@
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffffff" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
     body {
       background-image: url("fundo-mobile.png");
       background-size: cover;
@@ -14,48 +21,62 @@
       background-attachment: fixed;
     }
     @media (min-width: 768px) {
-      body { background-image: url("fundo-desktop.png"); }
+      body {
+        background-image: url("fundo-desktop.png");
+      }
     }
     header {
-      background-color: #ffffff;
+      background-color: #ffe3c6;
       height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
     }
-    .logo-container { display: flex; align-items: center; }
-    .logo-container img { height: 40px; margin-right: 10px; }
-    .logo { font-size: 1.5rem; font-weight: bold; }
-    .logo .mostra { color: #008182; }
-    .logo .ki { color: #ec2c4a; }
-    .menu-icon { font-size: 1.5rem; cursor: pointer; }
-    .menu-list {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background-color: #ffe3c6;
-      border: 2px solid black;
-      border-radius: 6px;
-      display: none;
-      flex-direction: column;
-      padding: 10px;
-      z-index: 1000;
+    .logo-container {
+      display: flex;
+      align-items: center;
     }
-    .menu-list a {
-      text-decoration: none;
+    .logo-container img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .logo .mostra {
+      color: #008182;
+    }
+    .logo .ki {
+      color: #ec2c4a;
+    }
+    .menu-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background-color: ##ffffff;
+      padding: 12px 0;
+      border-bottom: 2px solid #d73e45;
+    }
+    .menu-bar a {
       color: white;
-      padding: 10px 15px;
+      background-color: #d73e45;
+      padding: 8px 14px;
       border-radius: 6px;
       font-weight: bold;
-      background-color: #d73e45;
-      margin-bottom: 8px;
-      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s;
     }
-    .menu-list a:hover { background-color: #b8313b; }
-    .banner video { width: 100%; height: auto; }
+    .menu-bar a:hover {
+      background-color: #b8313b;
+    }
+    .banner video {
+      width: 100%;
+      height: auto;
+    }
     .section {
       background-color: #ffe3c6;
       margin: 40px auto;
@@ -65,7 +86,10 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
-    .section h2 { color: #008b8b; margin-bottom: 10px; }
+    .section h2 {
+      color: #008b8b;
+      margin-bottom: 10px;
+    }
     .btn {
       display: inline-block;
       margin-top: 15px;
@@ -84,34 +108,6 @@
       color: #555;
       font-size: 0.9rem;
     }
-    .google-login {
-      width: 100%;
-      padding: 10px;
-      background: white;
-      color: black;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .google-login img { height: 20px; }
-    .user-circle {
-      background-color: #15b0af;
-      color: white;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      margin-left: 10px;
-      font-size: 0.8rem;
-    }
   </style>
 </head>
 <body>
@@ -120,36 +116,33 @@
       <img src="logo.png" alt="Logo" />
       <div class="logo"><span class="mostra">Mostra</span><span class="ki">Ki</span></div>
     </div>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <div class="menu-list" id="menuList">
-      <a href="#">Início</a>
-      <a href="#">Sobre</a>
-      <a href="#">Serviços</a>
-      <a href="#">Contato</a>
-    </div>
-  </header>  <div class="banner">
-    <video autoplay muted loop>
-      <source src="video-banner.mp4" type="video/mp4" />
+    <div style="font-weight: bold; color: #15b0af; cursor: pointer;">Entrar</div>
+  </header>  <div class="menu-bar">
+    <a href="/sobre">Sobre</a>
+    <a href="/servicos">Serviços Adicionais</a>
+    <a href="/meusiteaki">Meu SiteAki</a>
+    <a href="/redes">Redes Sociais</a>
+    <a href="/contato">Contato</a>
+  </div>  <div class="banner">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="banner-mobile.webm" type="video/webm" media="(max-width: 768px)">
+      <source src="banner-desktop.webm" type="video/webm" media="(min-width: 769px)">
       Seu navegador não suporta vídeo HTML5.
     </video>
-  </div>  <section class="section">
+  </div>  <div class="section">
     <h2>Como Funciona?</h2>
     <p>Explicamos de forma clara como usar o MostraKi para divulgar seus produtos e ideias.</p>
-    <a class="btn" href="#">Veja Mais</a>
-  </section>  <section class="section">
+    <a href="#" class="btn">Veja Mais</a>
+  </div>  <div class="section">
     <h2>Redes Sociais</h2>
     <p>Conecte-se com o público nas redes sociais por meio do MostraKi.</p>
-    <a class="btn" href="#">Veja Mais</a>
-  </section>  <section class="section">
+    <a href="#" class="btn">Veja Mais</a>
+  </div>  <div class="section">
     <h2>Serviços Adicionais</h2>
     <p>Descubra como potencializar sua presença com nossos serviços extras.</p>
-    <a class="btn" href="#">Veja Mais</a>
-  </section>  <footer>
-    © 2025 MostraKi. Todos os direitos reservados.
-  </footer>  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("menuList");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    }
-  </script></body>
+    <a href="#" class="btn">Veja Mais</a>
+  </div>  <footer>
+    &copy; 2025 MostraKi. Todos os direitos reservados.
+  </footer>
+</body>
 </html>

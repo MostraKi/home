@@ -43,7 +43,6 @@ function App() {
       });
     });
   }, []);
-
   return (
     <div>
       {/* Cabeçalho */}
@@ -69,8 +68,6 @@ function App() {
     </div>
   );
 }
-
-export default App;
 {/* Seções centrais */}
 <main className="flex flex-col gap-12 px-4 py-12 bg-gray-50 text-center">
   <section className="max-w-xl mx-auto">
@@ -82,7 +79,6 @@ export default App;
       Veja Mais
     </a>
   </section>
-
   <section className="max-w-xl mx-auto">
     <h2 className="text-2xl font-bold text-[#ec2c4a] mb-2">Redes Sociais</h2>
     <p className="text-gray-700 mb-4">
@@ -92,7 +88,6 @@ export default App;
       Veja Mais
     </a>
   </section>
-
   <section className="max-w-xl mx-auto">
     <h2 className="text-2xl font-bold text-[#ec2c4a] mb-2">Serviços Adicionais</h2>
     <p className="text-gray-700 mb-4">
@@ -108,9 +103,7 @@ export default App;
   &copy; 2025 MostraKi. Todos os direitos reservados.
 </footer>
 import './App.css';
-
-function App() { return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> <header className="text-center py-6"> <h1 className="text-4xl font-extrabold text-orange-600">MostraKi</h1> <p className="text-lg mt-2 text-gray-600">Descubra, compartilhe e explore sua arte</p> </header>
-
+function App() { return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> <header className="text-center py-6"> <h1 className="text-4xl font-extrabold text-orange-600">MostraKi</h1> <p className="text-lg mt-2 text-gray-600">Descubra, compartilhe e explore sua arte</p> </header> 
 <main className="max-w-4xl mx-auto p-4 space-y-8">
     <section className="bg-white shadow rounded p-6">
       <h2 className="text-2xl font-bold mb-2">Cadastre sua arte</h2>
@@ -127,13 +120,10 @@ function App() { return ( <div className="min-h-screen bg-[#fff6ed] text-gray-80
       <p className="text-gray-700">Conecte-se com outros artistas e receba feedback.</p>
     </section>
   </main>
-
   <footer className="text-center text-sm text-gray-500 py-4">
     &copy; {new Date().getFullYear()} MostraKi. Todos os direitos reservados.
   </footer>
 </div>
-
 ); }
-
 export default App;
 

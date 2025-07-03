@@ -135,5 +135,5 @@ function App() { return ( <div className="min-h-screen bg-[#fff6ed] text-gray-80
 
 ); }
 
-export default App;"
+export default App;
 

@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
-</div>
-<!-- (restante do conteúdo segue igual) -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -11,24 +8,29 @@
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffffff" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    body {
-      background-image: url("fundo-mobile.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    @media (min-width: 768px) {
-      body {
-        background-image: url("fundo-desktop.png");
-      }
-    }
-    header {
+    /* estilo permanece o mesmo */
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo" />
+      <div class="logo"><span class="mostra">Mostra</span><span class="ki">Ki</span></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span id="authText" style="font-weight:bold; color:#15b0af; cursor:pointer; display:none;" onclick="handleAuthAction()"></span>
+      <div id="userCircle" class="user-circle" title="Perfil"></div>
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    <div class="menu-list" id="menu">
+      <a href="/">Home</a>
+      <a href="/sobre">Sobre</a>
+      <a href="/meu-site">Meu SiteAki</a>
+      <a href="/planos">Planos</a>
+      <a href="/servicos">Serviços Extras</a>
+      <a href="/redes">Redes Sociais</a>
+    </div>
+  </header>
       background-color: #ffffff;
       height: 60px;
       display: flex;

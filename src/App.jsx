@@ -12,12 +12,10 @@ function App() {
       appId: "1:932409459380:web:1ec374091f4498d692cde1",
       measurementId: "G-PRPG5CLE5W"
     };
-
     import('firebase/app').then(({ initializeApp }) => {
       import('firebase/auth').then((firebaseAuth) => {
         const app = initializeApp(firebaseConfig);
         const auth = firebaseAuth.getAuth(app);
-
         firebaseAuth.onAuthStateChanged(auth, (user) => {
           const authText = document.getElementById("authText");
           const userCircle = document.getElementById("userCircle");
@@ -58,7 +56,6 @@ function App() {
           <div id="userCircle" className="hidden w-8 h-8 rounded-full bg-[#15b0af] text-white flex items-center justify-center text-sm font-bold" />
         </div>
       </header>
-
       {/* Banner */}
       <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden">
         <video autoPlay muted loop playsInline className="w-full h-full object-cover">
@@ -67,7 +64,6 @@ function App() {
       </div>
     </div>
   );
-}
 {/* Seções centrais */}
 <main className="flex flex-col gap-12 px-4 py-12 bg-gray-50 text-center">
   <section className="max-w-xl mx-auto">
@@ -109,12 +105,10 @@ function App() { return ( <div className="min-h-screen bg-[#fff6ed] text-gray-80
       <h2 className="text-2xl font-bold mb-2">Cadastre sua arte</h2>
       <p className="text-gray-700">Suba suas imagens e compartilhe com a comunidade.</p>
     </section>
-
     <section className="bg-white shadow rounded p-6">
       <h2 className="text-2xl font-bold mb-2">Veja o que está em alta</h2>
       <p className="text-gray-700">Explore os trabalhos mais recentes e mais votados.</p>
     </section>
-
     <section className="bg-white shadow rounded p-6">
       <h2 className="text-2xl font-bold mb-2">Crie sua conta</h2>
       <p className="text-gray-700">Conecte-se com outros artistas e receba feedback.</p>

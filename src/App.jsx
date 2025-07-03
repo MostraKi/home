@@ -107,3 +107,33 @@ export default App;
 <footer className="bg-[#ffe3c6] py-6 text-center text-[#555] text-sm">
   &copy; 2025 MostraKi. Todos os direitos reservados.
 </footer>
+""import './App.css';
+
+function App() { return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> <header className="text-center py-6"> <h1 className="text-4xl font-extrabold text-orange-600">MostraKi</h1> <p className="text-lg mt-2 text-gray-600">Descubra, compartilhe e explore sua arte</p> </header>
+
+<main className="max-w-4xl mx-auto p-4 space-y-8">
+    <section className="bg-white shadow rounded p-6">
+      <h2 className="text-2xl font-bold mb-2">Cadastre sua arte</h2>
+      <p className="text-gray-700">Suba suas imagens e compartilhe com a comunidade.</p>
+    </section>
+
+    <section className="bg-white shadow rounded p-6">
+      <h2 className="text-2xl font-bold mb-2">Veja o que está em alta</h2>
+      <p className="text-gray-700">Explore os trabalhos mais recentes e mais votados.</p>
+    </section>
+
+    <section className="bg-white shadow rounded p-6">
+      <h2 className="text-2xl font-bold mb-2">Crie sua conta</h2>
+      <p className="text-gray-700">Conecte-se com outros artistas e receba feedback.</p>
+    </section>
+  </main>
+
+  <footer className="text-center text-sm text-gray-500 py-4">
+    &copy; {new Date().getFullYear()} MostraKi. Todos os direitos reservados.
+  </footer>
+</div>
+
+); }
+
+export default App;"
+

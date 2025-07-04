@@ -41,19 +41,40 @@ const toggleMenu = () => { const menu = document.getElementById("menu"); menu.cl
 return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> {/* Cabeçalho com menu responsivo */} <header className="bg-white h-[60px] flex justify-between items-center px-6 shadow z-10 relative"> <div className="flex items-center gap-2"> <img src="logo.png" alt="Logo" className="h-8" /> <h1 className="text-xl font-bold text-[#008182]"> Mostra<span className="text-[#ec2c4a]">Ki</span> </h1> </div> <div className="flex items-center gap-3"> <span id="authText" className="font-bold text-[#15b0af] cursor-pointer hidden"></span> <div id="userCircle" className="hidden w-8 h-8 rounded-full bg-[#15b0af] text-white flex items-center justify-center text-sm font-bold" /> <div className="text-2xl cursor-pointer md:hidden" onClick={toggleMenu}> ☰ </div> </div>
 
 {/* Menu suspenso */}
-    <div id="menu" className="menu-list hidden absolute top-[60px] right-4 bg-[#ffe3c6] border border-black rounded-md flex-col p-4 z-50 space-y-2 md:hidden">
-      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/">Página Inicial</a>
-      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/sobre">Sobre</a>
-      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/planos">Planos</a>
-      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/servicos-adicionais">Serviços Adicionais</a>
-      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/meusiteaki">Meu SiteAki</a>
-      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/contato">Contato</a>
+    <div
+      id="menu"
+      className="menu-list hidden absolute top-[60px] right-4 bg-[#ffe3c6] border border-black rounded-lg flex flex-col p-4 z-50 space-y-2 md:hidden w-64 shadow-lg text-center"
+    >
+      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/">
+        Página Inicial
+      </a>
+      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/sobre">
+        Sobre
+      </a>
+      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/planos">
+        Planos
+      </a>
+      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/servicos-adicionais">
+        Serviços Adicionais
+      </a>
+      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/meusiteaki">
+        Meu SiteAki
+      </a>
+      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/contato">
+        Contato
+      </a>
     </div>
   </header>
 
   {/* Banner adaptado para web e mobile com altura proporcional */}
   <div className="relative w-full overflow-hidden">
-    <video autoPlay muted loop playsInline className="w-full h-[300px] md:h-[400px] object-cover">
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="w-full h-[240px] md:h-[400px] object-cover"
+    >
       <source src="banner-mobile.webm" type="video/webm" media="(max-width: 768px)" />
       <source src="banner-desktop.webm" type="video/webm" media="(min-width: 769px)" />
       Seu navegador não suporta vídeo HTML5.
@@ -67,7 +88,10 @@ return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> {/*
       <p className="text-gray-700 mb-4">
         O MostraKi foi criado para você que quer mostrar seu trabalho de forma simples, bonita e profissional.
       </p>
-      <a href="#" className="inline-block bg-[#15b0af] text-white px-4 py-2 rounded hover:bg-[#129090] transition">
+      <a
+        href="#"
+        className="inline-block bg-[#15b0af] text-white px-4 py-2 rounded hover:bg-[#129090] transition"
+      >
         Veja Mais
       </a>
     </section>
@@ -77,7 +101,10 @@ return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> {/*
       <p className="text-gray-700 mb-4">
         Conecte-se com o público nas redes sociais por meio do MostraKi e amplie seu alcance.
       </p>
-      <a href="#" className="inline-block bg-[#15b0af] text-white px-4 py-2 rounded hover:bg-[#129090] transition">
+      <a
+        href="#"
+        className="inline-block bg-[#15b0af] text-white px-4 py-2 rounded hover:bg-[#129090] transition"
+      >
         Veja Mais
       </a>
     </section>
@@ -87,7 +114,10 @@ return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> {/*
       <p className="text-gray-700 mb-4">
         Descubra como potencializar sua presença com nossos serviços extras e opções personalizadas.
       </p>
-      <a href="#" className="inline-block bg-[#15b0af] text-white px-4 py-2 rounded hover:bg-[#129090] transition">
+      <a
+        href="#"
+        className="inline-block bg-[#15b0af] text-white px-4 py-2 rounded hover:bg-[#129090] transition"
+      >
         Veja Mais
       </a>
     </section>

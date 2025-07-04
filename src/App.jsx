@@ -73,7 +73,7 @@ return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> {/*
       muted
       loop
       playsInline
-      className="w-full h-[300px] md:h-[512px] object-cover"
+      className="w-full h-auto object-cover"
     >
       <source src="banner-mobile.webm" type="video/webm" media="(max-width: 768px)" />
       <source src="banner-desktop.webm" type="video/webm" media="(min-width: 769px)" />

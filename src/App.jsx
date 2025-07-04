@@ -43,37 +43,37 @@ return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> {/*
 {/* Menu suspenso */}
     <div
       id="menu"
-      className="menu-list hidden absolute top-[60px] right-4 bg-[#ffe3c6] border border-black rounded-lg flex flex-col p-4 z-50 space-y-2 md:hidden w-64 shadow-lg text-center"
+      className="menu-list hidden absolute top-[60px] right-4 bg-[#ffe3c6] border border-black rounded-lg flex flex-col p-4 z-50 space-y-2 md:hidden w-60 shadow-lg"
     >
-      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/">
+      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/">
         Página Inicial
       </a>
-      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/sobre">
+      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/sobre">
         Sobre
       </a>
-      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/planos">
+      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/planos">
         Planos
       </a>
-      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/servicos-adicionais">
+      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/servicos-adicionais">
         Serviços Adicionais
       </a>
-      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/meusiteaki">
+      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/meusiteaki">
         Meu SiteAki
       </a>
-      <a className="bg-[#d73e45] text-white py-2 rounded-md font-bold hover:bg-[#b8313b]" href="/contato">
+      <a className="bg-[#d73e45] text-white px-4 py-2 rounded-md font-bold text-center hover:bg-[#b8313b]" href="/contato">
         Contato
       </a>
     </div>
   </header>
 
-  {/* Banner adaptado para web e mobile com altura proporcional */}
+  {/* Banner adaptado para web e mobile com altura proporcional ajustada */}
   <div className="relative w-full overflow-hidden">
     <video
       autoPlay
       muted
       loop
       playsInline
-      className="w-full h-[240px] md:h-[400px] object-cover"
+      className="w-full h-[200px] md:h-[400px] object-cover"
     >
       <source src="banner-mobile.webm" type="video/webm" media="(max-width: 768px)" />
       <source src="banner-desktop.webm" type="video/webm" media="(min-width: 769px)" />

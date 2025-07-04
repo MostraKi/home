@@ -66,14 +66,14 @@ return ( <div className="min-h-screen bg-[#fff6ed] text-gray-800 font-sans"> {/*
     </div>
   </header>
 
-  {/* Banner adaptado para web e mobile com altura proporcional ajustada */}
+  {/* Banner adaptado para web e mobile com altura proporcional */}
   <div className="relative w-full overflow-hidden">
     <video
       autoPlay
       muted
       loop
       playsInline
-      className="w-full h-[200px] md:h-[400px] object-cover"
+      className="w-full h-[300px] md:h-[512px] object-cover"
     >
       <source src="banner-mobile.webm" type="video/webm" media="(max-width: 768px)" />
       <source src="banner-desktop.webm" type="video/webm" media="(min-width: 769px)" />

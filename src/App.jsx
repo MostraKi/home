@@ -11,30 +11,39 @@ import('firebase/app').then(({ initializeApp }) => {
     firebaseAuth.onAuthStateChanged(auth, (user) => {
       const authText = document.getElementById("authText");
       const userCircle = document.getElementById("userCircle");
+
       if (user) {
-        const nome = user.displayName || user.email;
-        const iniciais = nome.trim().charAt(0).toUpperCase();
-        if (userCircle) {
-          userCircle.textContent = iniciais;
-          userCircle.classList.remove('hidden');
-          userCircle.style.backgroundImage = `url(${user.photoURL})`;
-          userCircle.style.backgroundSize = 'cover';
-          userCircle.style.backgroundPosition = 'center';
-        }
         if (authText) {
           authText.textContent = "Sair";
+          authText.classList.remove('hidden');
           authText.onclick = () => firebaseAuth.signOut(auth);
+        }
+
+        if (userCircle) {
+          const photoURL = user.photoURL;
+          if (photoURL) {
+            userCircle.innerHTML = `<img src="${photoURL}" class="w-8 h-8 rounded-full object-cover" alt="perfil" />`;
+          } else {
+            const nome = user.displayName || user.email;
+            const iniciais = nome?.trim()?.charAt(0)?.toUpperCase() || "?";
+            userCircle.textContent = iniciais;
+          }
+          userCircle.classList.remove('hidden');
+          userCircle.onclick = () => {
+            window.location.href = "/conta";
+          };
         }
       } else {
         if (authText) {
           authText.textContent = "Entrar";
+          authText.classList.remove('hidden');
           authText.onclick = () => {
             firebaseAuth.signInWithPopup(auth, provider).catch(e => alert("Erro: " + e.message));
           };
         }
         if (userCircle) {
           userCircle.classList.add('hidden');
-          userCircle.style.backgroundImage = '';
+          userCircle.innerHTML = "";
         }
       }
     });

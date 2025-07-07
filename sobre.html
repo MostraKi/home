@@ -3,8 +3,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobre - MostraKi</title>
-  <script type="module" src="/auth.js"></script>
-  <script type="module" src="/header.js"></script>
+  <script type="module" src="/src/auth.js"></script>
+  <script type="module" src="/src/header.js"></script>
   <style>
     body {
       margin: 0;
@@ -42,6 +42,9 @@
     <p>Com interface intuitiva, suporte técnico prático e uma comunidade vibrante, o MostraKi é mais do que um site — é um espaço de expressão verdadeira.</p>
   </main>  <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>
-</body>
+  </footer>  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof renderHeader === 'function') renderHeader();
+    });
+  </script></body>
 </html>

@@ -1,76 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sobre - MostraKi</title>
-  <script type="module" src="/src/auth.js"></script>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    body {
-      background-image: url("fundo-mobile.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    @media (min-width: 768px) {
-      body {
-        background-image: url("fundo-desktop.png");
-      }
-    }
-    .section {
-      background-color: #ffe3c6;
-      margin: 60px auto;
-      padding: 30px 20px;
-      width: 90%;
-      max-width: 800px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-    .section h1 {
-      color: #008182;
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
-    .section p {
-      color: #333;
-      line-height: 1.6;
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-    footer {
-      background-color: #ffe3c6;
-      padding: 20px;
-      text-align: center;
-      color: #555;
-      font-size: 0.9rem;
-      margin-top: 40px;
-    }
-  </style>
-</head>
-<body>
-  <div id="header"></div>
+export function renderHeader(currentPage) {
+  const headerHTML = `
+    <header style="background-color: #ffffff; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
+      <div class="logo-container" style="display: flex; align-items: center;">
+        <a href="/index.html" style="display: flex; align-items: center; text-decoration: none;">
+          <img src="/logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+          <div class="logo" style="font-size: 1.5rem; font-weight: bold;">
+            <span style="color: #008182;">Mostra</span><span style="color: #ec2c4a;">Ki</span>
+          </div>
+        </a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span id="authText" style="font-weight:bold; color:#15b0af; cursor:pointer; display:none;" onclick="handleAuthAction()"></span>
+        <div id="userCircle" class="user-circle" title="Perfil" style="background-color: #15b0af; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: none; align-items: center; justify-content: center; margin-left: 10px; font-size: 0.8rem;"></div>
+        <div class="menu-icon" onclick="toggleMenu()" style="font-size: 1.5rem; cursor: pointer;">&#9776;</div>
+      </div>
+      <div class="menu-list" id="menu" style="position: absolute; top: 60px; right: 20px; background-color: #ffe3c6; border: 2px solid black; border-radius: 6px; display: none; flex-direction: column; padding: 10px; z-index: 1000;">
+        ${renderMenu(currentPage)}
+      </div>
+    </header>
+  `;
+  document.getElementById("header").innerHTML = headerHTML;
+}
 
-  <div class="section">
-    <h1>Sobre o MostraKi</h1>
-    <p>O MostraKi é uma plataforma pensada para apoiar criadores independentes, artesãos, artistas e pequenos empreendedores a exibirem seus produtos e serviços de forma simples, clara e bonita.</p>
-    <p>Criamos uma jornada onde você pode organizar seu trabalho, compartilhar com o mundo e se conectar com quem valoriza o que você faz.</p>
-    <p>Com interface intuitiva, suporte técnico prático e uma comunidade vibrante, o MostraKi é mais do que um site — é um espaço de expressão verdadeira.</p>
-  </div>
+function renderMenu(currentPage) {
+  const pages = [
+    { name: "Página Inicial", path: "/index.html" },
+    { name: "Sobre", path: "/sobre.html" },
+    { name: "Planos", path: "/planos.html" },
+    { name: "Serviços Adicionais", path: "/servicos-adicionais.html" },
+    { name: "Meu SiteAki", path: "/meusiteaki.html" },
+    { name: "Contato", path: "/contato.html" }
+  ];
 
-  <footer>
-    &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>
+  return pages
+    .filter(p => !location.pathname.endsWith(p.path))
+    .map(p => `<a href="${p.path}" style="text-decoration: none; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; background-color: #d73e45; margin-bottom: 8px; text-align: center;">${p.name}</a>`)
+    .join("\n");
+}
 
-  <script type="module">
-    import { renderHeader } from "/src/header.js";
-    renderHeader();
-  </script>
-</body>
-</html>
+window.toggleMenu = function () {
+  const menu = document.getElementById("menu");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+};
+
+document.addEventListener("DOMContentLoaded", () => renderHeader());

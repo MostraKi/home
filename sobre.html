@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobre - MostraKi</title>
   <script type="module" src="/src/auth.js"></script>
-  <script type="module" src="/src/header.js"></script>
   <style>
     body {
       margin: 0;
@@ -36,15 +36,22 @@
   </style>
 </head>
 <body>
-  <div id="header"></div>  <main>
+  <div id="header"></div>
+
+  <main>
     <h1>Sobre o MostraKi</h1>
     <p>O MostraKi é uma plataforma pensada para apoiar criadores independentes, artesãos, artistas e pequenos empreendedores a exibirem seus produtos e serviços de forma simples, clara e bonita. Criamos uma jornada onde você pode organizar seu trabalho, compartilhar com o mundo e se conectar com quem valoriza o que você faz.</p>
     <p>Com interface intuitiva, suporte técnico prático e uma comunidade vibrante, o MostraKi é mais do que um site — é um espaço de expressão verdadeira.</p>
-  </main>  <footer>
+  </main>
+
+  <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (typeof renderHeader === 'function') renderHeader();
-    });
-  </script></body>
+  </footer>
+
+  <!-- Aqui o header.js é importado corretamente -->
+  <script type="module">
+    import { renderHeader } from "/src/header.js";
+    renderHeader();
+  </script>
+</body>
 </html>

@@ -1,46 +1,139 @@
-export function renderHeader(currentPage) {
-  const headerHTML = `
-    <header style="background-color: #ffffff; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-      <div class="logo-container" style="display: flex; align-items: center;">
-        <a href="/index.html" style="display: flex; align-items: center; text-decoration: none;">
-          <img src="/logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
-          <div class="logo" style="font-size: 1.5rem; font-weight: bold;">
-            <span style="color: #008182;">Mostra</span><span style="color: #ec2c4a;">Ki</span>
-          </div>
-        </a>
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <span id="authText" style="font-weight:bold; color:#15b0af; cursor:pointer; display:none;" onclick="handleAuthAction()"></span>
-        <div id="userCircle" class="user-circle" title="Perfil" style="background-color: #15b0af; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: none; align-items: center; justify-content: center; margin-left: 10px; font-size: 0.8rem;"></div>
-        <div class="menu-icon" onclick="toggleMenu()" style="font-size: 1.5rem; cursor: pointer;">&#9776;</div>
-      </div>
-      <div class="menu-list" id="menu" style="position: absolute; top: 60px; right: 20px; background-color: #ffe3c6; border: 2px solid black; border-radius: 6px; display: none; flex-direction: column; padding: 10px; z-index: 1000;">
-        ${renderMenu(currentPage)}
-      </div>
-    </header>
-  `;
-  document.getElementById("header").innerHTML = headerHTML;
-}
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import {
+  getAuth,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signOut,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
-function renderMenu(currentPage) {
-  const pages = [
-    { name: "Página Inicial", path: "/index.html" },
-    { name: "Sobre", path: "/sobre.html" },
-    { name: "Planos", path: "/planos.html" },
-    { name: "Serviços Adicionais", path: "/servicos-adicionais.html" },
-    { name: "Meu SiteAki", path: "/meusiteaki.html" },
-    { name: "Contato", path: "/contato.html" }
-  ];
-
-  return pages
-    .filter(p => !location.pathname.endsWith(p.path))
-    .map(p => `<a href="${p.path}" style="text-decoration: none; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; background-color: #d73e45; margin-bottom: 8px; text-align: center;">${p.name}</a>`)
-    .join("\n");
-}
-
-window.toggleMenu = function () {
-  const menu = document.getElementById("menu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+const firebaseConfig = {
+  apiKey: "AIzaSyCE2Q4UXC9rzWjtmWIy3aa6e56sWk80TqY",
+  authDomain: "mostraki-8dc92.firebaseapp.com",
+  projectId: "mostraki-8dc92",
+  storageBucket: "mostraki-8dc92.appspot.com",
+  messagingSenderId: "932409459380",
+  appId: "1:932409459380:web:1ec374091f4498d692cde1",
+  measurementId: "G-PRPG5CLE5W"
 };
 
-document.addEventListener("DOMContentLoaded", () => renderHeader());
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Funções globais para o modal
+window.login = function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      alert("Login realizado com sucesso!");
+      closeModal();
+    })
+    .catch(error => {
+      alert("Erro ao fazer login: " + error.message);
+    });
+};
+
+window.resetarSenha = function () {
+  const email = document.getElementById("email").value;
+  if (!email) {
+    alert("Digite seu e-mail para redefinir a senha.");
+    return;
+  }
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert("Enviamos um link para redefinir sua senha. Verifique sua caixa de entrada.");
+    })
+    .catch(error => {
+      alert("Erro ao enviar e-mail de redefinição: " + error.message);
+    });
+};
+
+window.loginComGoogle = function () {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const isNewUser = result._tokenResponse?.isNewUser;
+      if (isNewUser) {
+        alert("Cadastro realizado com sua conta Google!");
+      } else {
+        alert("Login realizado com Google!");
+      }
+      closeModal();
+    })
+    .catch((error) => {
+      if (error.code === 'auth/popup-closed-by-user') {
+        alert("O login com Google foi cancelado.");
+      } else {
+        alert("Erro ao fazer login com Google: " + error.message);
+      }
+    });
+};
+
+window.logout = function () {
+  signOut(auth).then(() => {
+    alert("Você saiu da sua conta.");
+    document.getElementById("userCircle").style.display = "none";
+    document.getElementById("authText").textContent = "Entrar";
+  }).catch((error) => {
+    alert("Erro ao sair: " + error.message);
+  });
+};
+
+window.closeModal = function () {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.style.display = "none";
+};
+
+window.openModal = function () {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.style.display = "flex";
+};
+
+window.handleAuthAction = function () {
+  const text = document.getElementById("authText").textContent;
+  if (text === "Entrar") {
+    openModal();
+  } else if (text === "Sair") {
+    logout();
+  }
+};
+
+// Atualização visual baseada no estado de login
+function atualizarUI(user) {
+  const userCircle = document.getElementById("userCircle");
+  const authText = document.getElementById("authText");
+
+  if (!userCircle || !authText) return;
+
+  if (user) {
+    const nome = user.displayName || user.email;
+    const iniciais = nome.trim().charAt(0).toUpperCase();
+    userCircle.textContent = iniciais;
+    userCircle.style.display = "flex";
+    authText.textContent = "Sair";
+    authText.style.display = "inline";
+  } else {
+    userCircle.style.display = "none";
+    authText.textContent = "Entrar";
+    authText.style.display = "inline";
+  }
+}
+
+// Observador para só rodar após header renderizado
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new MutationObserver(() => {
+    const userCircle = document.getElementById("userCircle");
+    const authText = document.getElementById("authText");
+
+    if (userCircle && authText) {
+      observer.disconnect();
+      onAuthStateChanged(auth, (user) => atualizarUI(user));
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+});

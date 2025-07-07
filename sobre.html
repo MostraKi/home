@@ -1,54 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sobre - MostraKi</title>
-  <script type="module" src="/src/auth.js"></script>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #fffdf8;
     }
-    main {
-      padding: 40px 20px;
+    body {
+      background-image: url("fundo-mobile.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    @media (min-width: 768px) {
+      body {
+        background-image: url("fundo-desktop.png");
+      }
+    }
+    .section {
+      background-color: #ffe3c6;
+      margin: 80px auto 40px;
+      padding: 30px;
+      width: 90%;
       max-width: 800px;
-      margin: 0 auto;
-    }
-    h1 {
-      color: #008182;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
-      margin-bottom: 20px;
     }
-    p {
+    .section h1 {
+      color: #008182;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+    .section p {
       color: #333;
       line-height: 1.6;
       font-size: 1.1rem;
     }
     footer {
       background-color: #ffe3c6;
-      text-align: center;
       padding: 20px;
+      text-align: center;
+      color: #555;
       font-size: 0.9rem;
-      color: #444;
     }
   </style>
+  <script type="module" src="/src/auth.js"></script>
 </head>
 <body>
   <div id="header"></div>
 
-  <main>
+  <div class="section">
     <h1>Sobre o MostraKi</h1>
     <p>O MostraKi é uma plataforma pensada para apoiar criadores independentes, artesãos, artistas e pequenos empreendedores a exibirem seus produtos e serviços de forma simples, clara e bonita. Criamos uma jornada onde você pode organizar seu trabalho, compartilhar com o mundo e se conectar com quem valoriza o que você faz.</p>
     <p>Com interface intuitiva, suporte técnico prático e uma comunidade vibrante, o MostraKi é mais do que um site — é um espaço de expressão verdadeira.</p>
-  </main>
+  </div>
 
   <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
   </footer>
 
-  <!-- Aqui o header.js é importado corretamente -->
   <script type="module">
     import { renderHeader } from "/src/header.js";
     renderHeader();

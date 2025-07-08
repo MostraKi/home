@@ -11,7 +11,7 @@ export function renderHeader() {
       </div>
       <div style="display: flex; align-items: center; gap: 10px;">
         <span id="authText" style="font-weight:bold; color:#15b0af; cursor:pointer; display:inline;" onclick="handleAuthAction()">Entrar</span>
-        <div id="userCircle" class="user-circle" title="Perfil" style="background-color: #15b0af; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: none; align-items: center; justify-content: center; margin-left: 10px; font-size: 0.8rem;"></div>
+        <div id="userCircle" class="user-circle" title="Perfil" onclick="window.location.href='/minha-conta.html'" style="background-color: #15b0af; color: white; font-weight: bold; border-radius: 50%; width: 32px; height: 32px; display: none; align-items: center; justify-content: center; margin-left: 10px; font-size: 0.8rem;"></div>
         <div class="menu-icon" onclick="toggleMenu()" style="font-size: 1.5rem; cursor: pointer;">&#9776;</div>
       </div>
       <div class="menu-list" id="menu" style="position: absolute; top: 60px; right: 20px; background-color: #ffe3c6; border: 2px solid black; border-radius: 6px; display: none; flex-direction: column; padding: 10px; z-index: 1000;">
@@ -21,23 +21,3 @@ export function renderHeader() {
   `;
   document.getElementById("header").innerHTML = headerHTML;
 }
-
-function renderMenu() {
-  const pages = [
-    { name: "Página Inicial", path: "/index.html" },
-    { name: "Sobre", path: "/sobre.html" },
-    { name: "Planos", path: "/planos.html" },
-    { name: "Serviços Adicionais", path: "/servicos-adicionais.html" },
-    { name: "Meu SiteAki", path: "/meusiteaki.html" },
-    { name: "Contato", path: "/contato.html" }
-  ];
-  return pages
-    .filter(p => !location.pathname.endsWith(p.path))
-    .map(p => `<a href="${p.path}" style="text-decoration: none; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; background-color: #d73e45; margin-bottom: 8px; text-align: center;">${p.name}</a>`)
-    .join("\n");
-}
-
-window.toggleMenu = function () {
-  const menu = document.getElementById("menu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-};

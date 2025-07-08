@@ -3,8 +3,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minha Conta - MostraKi</title>
-  <script type="module" src="/src/auth.js"></script>
-  <script type="module" src="/src/header.js"></script>
+  <script type="module" src="src/auth.js"></script>
+  <script type="module" src="src/header.js"></script>
   <style>
     body {
       margin: 0;
@@ -62,6 +62,19 @@
       object-fit: cover;
       margin-bottom: 10px;
     }
+    .custom-file-upload {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #008182;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    #fotoPerfil {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -70,6 +83,7 @@
     <h1>Minha Conta</h1>
     <div class="foto-perfil">
       <img id="previewFoto" src="/assets/default-user.png" alt="Foto de Perfil">
+      <label for="fotoPerfil" class="custom-file-upload">Procurar e carregar sua imagem de perfil</label>
       <input type="file" id="fotoPerfil" accept="image/*">
     </div>
     <label for="nome">Nome</label>

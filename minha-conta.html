@@ -1,84 +1,102 @@
-<!DOCTYPE html><html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Minha Conta - MostraKi</title>
-  <script type="module" src="src/auth.js"></script>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="theme-color" content="#ffffff" />
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url('/assets/bg-desktop.png');
+      background-image: url("fundo-mobile.png");
       background-size: cover;
-      background-position: center;
       background-repeat: no-repeat;
-      background-color: #fffdf8;
+      background-attachment: fixed;
     }
-    .container {
-      max-width: 800px;
-      margin: 80px auto;
-      background-color: rgba(255, 243, 229, 0.95);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    @media (min-width: 768px) {
+      body { background-image: url("fundo-desktop.png"); }
     }
-    h1 {
-      color: #008182;
-      text-align: center;
+    header {
+      background-color: #ffffff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 15px;
-      color: #333;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
+    .logo-container { display: flex; align-items: center; }
+    .logo-container img { height: 40px; margin-right: 10px; }
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    .logo .mostra { color: #008182; }
+    .logo .ki { color: #ec2c4a; }
+    .menu-icon { font-size: 1.5rem; cursor: pointer; }
+    .menu-list {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #ffe3c6;
+      border: 2px solid black;
       border-radius: 6px;
-      font-size: 1rem;
-    }
-    button {
-      margin-top: 20px;
-      background-color: #ec2c4a;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .foto-perfil {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .foto-perfil img {
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-    .custom-file-upload {
-      display: inline-block;
-      padding: 10px 15px;
-      background-color: #008182;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-    }
-    #fotoPerfil {
       display: none;
+      flex-direction: column;
+      padding: 10px;
+      z-index: 1000;
+    }
+    .menu-list a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      background-color: #d73e45;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .menu-list a:hover { background-color: #b8313b; }
+    footer {
+      background-color: #ffe3c6;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    .user-circle {
+      background-color: #15b0af;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div id="header"></div>
-  <div class="container">
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo" />
+      <div class="logo"><span class="mostra">Mostra</span><span class="ki">Ki</span></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span id="authText" style="font-weight:bold; color:#15b0af; cursor:pointer; display:none;" onclick="handleAuthAction()"></span>
+      <div id="userCircle" class="user-circle" title="Perfil" onclick="window.location.href='minha-conta.html'"></div>
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    <div class="menu-list" id="menu">
+      <a href="/">Página Inicial</a>
+      <a href="/planos">Planos</a>
+      <a href="/servicos-adicionais">Serviços Adicionais</a>
+      <a href="/meusiteaki">Meu SiteAki</a>
+      <a href="/contato">Contato</a>
+    </div>
+  </header>  <div class="container">
     <h1>Minha Conta</h1>
     <div class="foto-perfil">
       <img id="previewFoto" src="/assets/default-user.png" alt="Foto de Perfil">
@@ -86,10 +104,9 @@
       <input type="file" id="fotoPerfil" accept="image/*">
     </div>
     <label for="nome">Nome</label>
-    <input type="text" id="nome" placeholder="Seu nome"><label for="descricao">Descrição</label>
-<textarea id="descricao" rows="4" placeholder="Fale um pouco sobre você"></textarea>
-
-<label for="email">Email</label>
+    <input type="text" id="nome" placeholder="Seu nome">
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" rows="4" placeholder="Fale um pouco sobre você"></textarea><label for="email">Email</label>
 <input type="email" id="email" disabled>
 
 <label for="links">Links (Instagram, WhatsApp etc.)</label>
@@ -98,34 +115,121 @@
 <label>Plano atual: <strong>Essencial</strong></label>
 <button onclick="mudarPlano()">Mudar Plano</button>
 <button onclick="cancelarAssinatura()">Cancelar Assinatura</button>
-
 <button onclick="salvarPerfil()">Salvar Alterações</button>
 
-  </div>
-  <footer style="background-color: #ffe3c6; text-align: center; padding: 20px; font-size: 0.9rem; color: #444;">
+  </div>  <footer>
     &copy; 2025 MostraKi. Todos os direitos reservados.
-  </footer>  <script type="module">
-    import { renderHeader } from './src/header.js';
-    renderHeader();
-  </script>  <script>
-    document.getElementById('fotoPerfil').addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById('previewFoto').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
+  </footer>  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+    function openModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+    function handleAuthAction() {
+      const text = document.getElementById("authText").textContent;
+      if (text === "Entrar") {
+        openModal();
+      } else if (text === "Sair") {
+        logout();
+      }
+    }
+  </script>  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import { getAuth, onAuthStateChanged, sendPasswordResetEmail, signOut, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCE2Q4UXC9rzWjtmWIy3aa6e56sWk80TqY",
+      authDomain: "mostraki-8dc92.firebaseapp.com",
+      projectId: "mostraki-8dc92",
+      storageBucket: "mostraki-8dc92.appspot.com",
+      messagingSenderId: "932409459380",
+      appId: "1:932409459380:web:1ec374091f4498d692cde1",
+      measurementId: "G-PRPG5CLE5W"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.login = function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Login realizado com sucesso!");
+          closeModal();
+        })
+        .catch(error => {
+          alert("Erro ao fazer login: " + error.message);
+        });
+    };
+
+    window.resetarSenha = function () {
+      const email = document.getElementById("email").value;
+      if (!email) {
+        alert("Digite seu e-mail para redefinir a senha.");
+        return;
+      }
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          alert("Enviamos um link para redefinir sua senha. Verifique sua caixa de entrada.");
+        })
+        .catch(error => {
+          alert("Erro ao enviar e-mail de redefinição: " + error.message);
+        });
+    };
+
+    window.loginComGoogle = function () {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const isNewUser = result._tokenResponse?.isNewUser;
+          if (isNewUser) {
+            alert("Cadastro realizado com sua conta Google!");
+          } else {
+            alert("Login realizado com Google!");
+          }
+          closeModal();
+        })
+        .catch((error) => {
+          if (error.code === 'auth/popup-closed-by-user') {
+            alert("O login com Google foi cancelado.");
+          } else {
+            alert("Erro ao fazer login com Google: " + error.message);
+          }
+        });
+    };
+
+    window.logout = function () {
+      signOut(auth).then(() => {
+        alert("Você saiu da sua conta.");
+        document.getElementById("userCircle").style.display = "none";
+        document.getElementById("authText").textContent = "Entrar";
+      }).catch((error) => {
+        alert("Erro ao sair: " + error.message);
+      });
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      const userCircle = document.getElementById("userCircle");
+      const authText = document.getElementById("authText");
+      if (user) {
+        const nome = user.displayName || user.email;
+        const iniciais = nome.trim().charAt(0).toUpperCase();
+        userCircle.textContent = iniciais;
+        userCircle.style.display = "flex";
+        authText.textContent = "Sair";
+        authText.style.display = "inline";
+      } else {
+        userCircle.style.display = "none";
+        authText.textContent = "Entrar";
+        authText.style.display = "inline";
       }
     });
-    function mudarPlano() {
-      alert("Função de mudança de plano ainda em construção.");
-    }
-    function cancelarAssinatura() {
-      alert("Função de cancelamento de assinatura ainda em construção.");
-    }
-    function salvarPerfil() {
-      alert("Função de salvamento de perfil ainda em construção.");
-    }
   </script></body>
 </html>
